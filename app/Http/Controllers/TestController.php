@@ -5,19 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use Illuminate\Support\Facades\Log;
-
- 
-
-
 class TestController extends Controller
 {
     public function add_customer_form()
-    {  
-      
-
+    {
         return view('customer.create');
 
-      
     }
 
     public function submit_customer_data(Request $request)
@@ -34,12 +27,12 @@ class TestController extends Controller
       $this->validate($request, $rules, $errorMessage);
 
       //$input['category'] = $request->input('category');
-      
+
       Customer::create([
-         'name' => $request->name,
-         'slug' => \Str::slug($request->name),
+          'name' => $request->name,
+          'slug' => \Str::slug($request->name),
           'category' => json_encode($request->input('category')),
-         'email' => strtolower($request->email)
+          'email' => strtolower($request->email)
       ]);
 
       Log::info('This is an informational message.- create customer ');
@@ -56,7 +49,7 @@ class TestController extends Controller
     }
 
     public function edit_customer_form(Customer $customer)
-    { 
+    {
        return view('customer.edit',compact('customer'));
     }
 
