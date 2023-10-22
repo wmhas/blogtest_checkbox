@@ -5,6 +5,8 @@ use App\Post;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +21,31 @@ use App\Http\Controllers\TestController;
 
 Route::resource('posts', 'PostController');
 
-/*Route::get('/posts/create', 'PostController@create');
-Route::post('/posts/index', 'PostController@index');
-Route::post('/posts', 'PostController@store');
-Route::get('/posts/{post}/edit', 'PostController@edit');
-Route::put('/posts/{post}', 'PostController@update'); */
+Route::post('article','ArticleController@store');
+Route::get('article/{article}','ArticleController@show');
+Route::get('article/{article}/comments','ArticleController@show_comments');
+Route::get('article/{article}/best-comment','ArticleController@show_best_comment');
+Route::get('articles','ArticleController@index');
+Route::delete('article/{article}','ArticleController@destroy');
 
-//Route::post('/posts/create', 'PostController@create');
+Route::post('article/{article}/comment','CommentController@store');
+Route::post('comment/{comment}/best-comment','CommentController@best_comment');
+Route::get('comments','CommentController@index');
+Route::get('comment/{comment}', 'CommentController@show');
+Route::delete('comment/{comment}','CommentController@destroy');
+Route::post('article','ArticleController@store');
+Route::get('article/{article}','ArticleController@show');
+Route::get('article/{article}/comments','ArticleController@show_comments');
+Route::get('article/{article}/best-comment','ArticleController@show_best_comment');
+Route::get('articles','ArticleController@index');
+Route::delete('article/{article}','ArticleController@destroy');
+
+Route::post('article/{article}/comment','CommentController@store');
+Route::post('comment/{comment}/best-comment','CommentController@best_comment');
+Route::get('comments','CommentController@index');
+Route::get('comment/{comment}', 'CommentController@show');
+Route::delete('comment/{comment}','CommentController@destroy');
+
 
 Route::get('/users', 'UserController@show');
 
@@ -42,4 +62,3 @@ Route::get('/customer/{customer}', 'TestController@view_single_customer')->name(
 Route::delete('/customer/{customer}', 'TestController@delete_customer')->name('customer.delete');
 
 
- 
