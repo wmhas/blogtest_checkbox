@@ -19,6 +19,9 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('email')->unique();
+            $table->foreign('organization_id')
+                ->references('id')
+                ->on('organizations');
             $table->timestamps();
         });
     }

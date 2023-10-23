@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Organization;
 
 class Customer extends Model
 {
@@ -17,4 +18,8 @@ class Customer extends Model
        {
            return 'slug';
        }
+
+    public function organizations(){
+        return $this->hasMany('Organization');
+    }
 }
