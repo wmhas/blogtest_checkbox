@@ -12,8 +12,8 @@ class Organization extends Model
 
     ];
 
-    public function customer(){
-        return $this->belongsTo('App\Customer');
+    public function customers(){
+        return $this->hasMany(Customer::class);
     }
 
 

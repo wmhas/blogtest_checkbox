@@ -13,12 +13,13 @@ class CreateCustomersTable extends Migration
      */
     public function up()
     {
-      
+
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('category');
             $table->string('email')->unique();
+            $table->integer('organization_id')->unsigned();
             $table->foreign('organization_id')
                 ->references('id')
                 ->on('organizations');

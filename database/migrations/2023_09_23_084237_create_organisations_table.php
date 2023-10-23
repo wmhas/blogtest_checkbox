@@ -13,8 +13,8 @@ class CreateOrganisationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('organisations', function (Blueprint $table) {
-            $table->id();
+        Schema::create('organizations', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name'); // Name field as a string
             $table->string('address'); // Address field as a string
             $table->timestamps();

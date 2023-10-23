@@ -9,17 +9,18 @@ class Customer extends Model
 {
     protected $fillable = [
         'name',
-        'slug',
         'category',
+        'organization_id',
         'email'
+
        ];
-   
+
        public function getRouteKeyName()
        {
            return 'slug';
        }
 
-    public function organizations(){
-        return $this->hasMany('Organization');
+    public function organization(){
+        return $this->belongsTo('Organization', 'organization_id');
     }
 }
